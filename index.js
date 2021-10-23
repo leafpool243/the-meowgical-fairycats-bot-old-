@@ -14,10 +14,9 @@
 
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-import DiscordJS, { ApplicationCommandPermissionsManager, Intents } from 'discord.js';
-import WOKCommands from 'wokcommands';
-import path from 'path';
-const { token } = require('./config.json');
+import DiscordJS, { Intents } from "discord.js";
+const { token } = require("./config.json");
+import { default as commandlist } from "./commands/index.js"
 
 const client = new DiscordJS.Client({
     intents: [
@@ -29,7 +28,7 @@ const client = new DiscordJS.Client({
 
 client.login(token);
 
-client.on('ready', async () => {
+client.on("ready", async () => {
     console.log("Bot is online!");
 
     // const guildid = "896196282589261854";
@@ -52,9 +51,9 @@ client.on('ready', async () => {
         console.log(interaction);
 
         if (interaction.commandName === "ping") {
-            await interaction.reply("Pong!");
+            await commandlist.ping(interaction);
         } else if (interaction.commandName === "hi") {
-            await interaction.reply(`Hey there, ${interaction.member.nickname}! :3`);
+            await commandlist.hi(interaction);
         } else if (interaction.commandName === "你好") {
             await interaction.reply(`${interaction.member.nickname} 你好！`)
         }
