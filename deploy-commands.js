@@ -1,13 +1,15 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);const { SlashCommandBuilder } = require('@discordjs/builders');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { clientId, token } = require('./config.json');
 
 const commands = [
-	new SlashCommandBuilder().setName('buttontest').setDescription('Replies with button test.'),
-	new SlashCommandBuilder().setName('embedtest').setDescription('Creates an embed.'),
+	// new SlashCommandBuilder().setName('buttontest').setDescription('Replies with button test.'),
+	// new SlashCommandBuilder().setName('embedtest').setDescription('Creates an embed.'),
 	new SlashCommandBuilder().setName('hi').setDescription('Say hi to the bot!! :3'),
-	new SlashCommandBuilder().setName('pingtest').setDescription('Ping pong!'),
+	new SlashCommandBuilder().setName('你好').setDescription('跟機器人說你好！！ :3'),
+	new SlashCommandBuilder().setName('ping').setDescription('Ping pong!'),
 ]
 	.map(command => command.toJSON());
 
